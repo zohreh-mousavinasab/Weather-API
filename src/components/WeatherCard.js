@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Feed } from 'semantic-ui-react'
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSmog, faBolt, faCloudRain, faSnowman, faSun, faCloud  } from '@fortawesome/free-solid-svg-icons'
+import { faSmog, faBolt, faCloudRain, faSnowman, faSun, faCloud  }from '@fortawesome/free-solid-svg-icons'
 
 export default function WeatherCard(
 
@@ -57,10 +57,10 @@ return(
 
           <div className= "weather-Card">
             <div className= "weather-Card-child">
-           <b> Sunrise</b>: {new Data(sunrise*1000).tolocaleTimeString('en-IN')}
+           <b> Sunrise</b>: {new Date(sunrise*1000).tolocaleTimeString('en-IN')}
             </div>
             <div className= "weather-Card-child">
-           <b> Sunset</b>: {new Data(sunset*1000).tolocaleTimeString('en-IN')}
+           <b> Sunset</b>: {new Date(sunset*1000).tolocaleTimeString('en-IN')}
               
             </div>
           </div>
@@ -70,6 +70,6 @@ return(
       </Feed>
     </Card.Content>
   </Card>
-)
-
-export default WeatherCard}
+);
+}
+//export default WeatherCard;

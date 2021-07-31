@@ -17,23 +17,24 @@ const   [temprature, setTemprature]= useState(null);
 const   [humidity, setHumidity]= useState(null);
 const   [sunrise, setSunrise]= useState(null);
 const   [sunset, setSunset]= useState(null);
-const   [icon, setSunset]= useState();
+const   [icon, setIcon]= useState(null);
 const   [forcast, setForecast]= useState([]);
 const   [loading, setloading]= useState(true);
 
 useEffect(() => {
   navigator.geolocation.getCurrentPosition(function(position) {
-    setLatitude(position.coords.latitude);
+    setlatitude(position.coords.latitude);
     setlongitude(position.coords.longitude);
   });
 
 
    axios.get('${URL}?lat=$(latitude)&lon=$(longitude)&exclude=hourly,minutely&appid= ${API_KEY}')
+   
   .then((weatherData) => {     
     setloading(false)
     setTemprature(weatherData.data.current.temp)
-    setSunset(weatherData.data.current.Sunset)
     setSunrise(weatherData.data.current.Sunrise)
+    setSunset(weatherData.data.current.Sunset)
     setHumidity(weatherData.data.current.Humidity)
     setCity(weatherData.data.timezone)
     setIcon(weatherData.data.current.weather[0].main)

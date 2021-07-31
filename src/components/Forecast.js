@@ -1,18 +1,23 @@
 import React from 'react';
 import { Card, CardGroup } from 'semantic-ui-react';
+import moment from 'moment';
 
 export default function Forecast({forcast}) {
     return (
-        <div>
+        <div style={{marginTop= 20}}>
             <CardGroup itemsPerRow={4}>
                 {forcast.map((data) => {
                   return(
-                   <Card>
+                   <Card className="forecast-card">
                    <Card.Content>
-                      <Card.Header>{Matt.round((data.temp.max + data.temp.min)/2)} ℃ </Card.Header>
-                      <Card.Meta>{data.humidity} % </Card.Meta>
+                      <Card.Header className="forecast-date">
+                       date:{moment.unix(data.dt).format['LL']}
+                       </Card.Header>
+                        <Card.Meta className="forecast-header">
+                          Humidity: {data.humidity} % 
+                      </Card.Meta>
                       <Card.Description className="temp-desc">
-                          {data.weather[0].description} 
+                      Description: {data.weather[0].description} 
                       </Card.Description>
                    </Card.Content>
                    </Card>
